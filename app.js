@@ -7,6 +7,9 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const PORT = process.env.PORT | 3000;
+
+
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
@@ -29,4 +32,6 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-server.listen(3000);
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
